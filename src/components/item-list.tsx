@@ -21,9 +21,14 @@ const ItemList = () => {
             );
     }
 
+    console.log(todoList);
+
     return (
         <div>
-            <p>This will be the list of to do items</p>
+            {todoList.map(item => 
+                <div>
+                    <p>{item}</p>
+                </div>)}
             <form onSubmit={handleSubmit}>
                 <label /> Create a new item:
                 <input 
