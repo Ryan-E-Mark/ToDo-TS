@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+const initialValue : string[] = [];
+
 const ItemList = () => {
-    const [todoList, setTodoList] = useState([]);
+    const [todoList, setTodoList] = useState(initialValue);
     const [newItem, setNewItem] = useState('');
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -10,6 +12,7 @@ const ItemList = () => {
             ...todoList,
             newItem
         ])
+        setNewItem('');
     }
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
