@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { getAllJSDocTagsOfKind } from 'typescript';
 
 const initialValue : object[] = [];
+const id = Math.random();
 const initialObject = {
-    id: 0,
+    id: id,
     task: '',
 };
+
 
 const ItemList = () => {
     const [todoList, setTodoList] = useState(initialValue);
@@ -16,14 +17,14 @@ const ItemList = () => {
         setTodoList([
             ...todoList,
             newItem
-        ])
+        ]);
         setNewItem(initialObject);
     }
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setNewItem({
             id: Math.random(),
-            [e.target.name] : e.target.value,
+            task: e.target.value,
         });
     }
 
@@ -35,11 +36,11 @@ const ItemList = () => {
 
     return (
         <div>
-            {todoList.map(item => 
+            {todoList.length > 0 ? todoList.map(item => 
                 <div>
                     <p>{item.task}</p>
-                    <button onClick={handleDelete}>X</button>
-                </div>)}
+                    {/* <button onClick={handleDelete}>X</button> */}
+                </div>) : <></>}
             <form onSubmit={handleSubmit}>
                 <label /> Create a new item:
                 <input 
