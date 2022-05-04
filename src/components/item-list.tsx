@@ -1,5 +1,7 @@
-import { stringify } from 'querystring';
 import React, { useState } from 'react';
+// Styled Components
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const initialValue : object[] = [];
 const id = Math.random();
@@ -49,14 +51,15 @@ const ItemList: React.FC = () => {
                     <button onClick={() => handleDelete(item.id)}>X</button>
                 </div>))}
             <form onSubmit={handleSubmit}>
-                <label /> Create a new item:
-                <input 
+                <TextField
+                    id="standard-basic" 
+                    label="Task"
                     type="text"
                     name="todo"
                     value={newItem.task}
                     onChange={handleInput}
                 />
-                <button>Create</button>
+                <Button variant="outlined">Create</Button>
             </form>
         </div>
     );
