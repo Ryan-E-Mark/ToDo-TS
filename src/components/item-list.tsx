@@ -33,9 +33,10 @@ const ItemList: React.FC = () => {
         });
     }
 
-    // const handleDelete = (e: any) => {
-    //     return(todoList.filter(task !== task.id));
-    // }
+    const handleDelete = (id: number) => {
+        const activeTasks = todoList.filter((item: any) => item.id !== id);
+        setTodoList(activeTasks);
+    }
 
     console.log(todoList);
 
@@ -45,7 +46,7 @@ const ItemList: React.FC = () => {
             {todoList.map((item: any) => (
                 <div>
                     <p>{item.task}</p>
-                    {/* <button onClick={handleDelete}>X</button> */}
+                    <button onClick={() => handleDelete(item.id)}>X</button>
                 </div>))}
             <form onSubmit={handleSubmit}>
                 <label /> Create a new item:
