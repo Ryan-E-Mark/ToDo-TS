@@ -1,14 +1,19 @@
+import { stringify } from 'querystring';
 import React, { useState } from 'react';
 
 const initialValue : object[] = [];
 const id = Math.random();
-const initialObject = {
+export type Item = {
+    id: number;
+    task: string;
+}
+const initialObject: Item = {
     id: id,
     task: '',
 };
 
 
-const ItemList = () => {
+const ItemList: React.FC = () => {
     const [todoList, setTodoList] = useState(initialValue);
     const [newItem, setNewItem] = useState(initialObject);
 
@@ -34,13 +39,14 @@ const ItemList = () => {
 
     console.log(todoList);
 
+
     return (
         <div>
-            {todoList.length > 0 ? todoList.map(item => 
+            {todoList.map((item: any) => (
                 <div>
                     <p>{item.task}</p>
                     {/* <button onClick={handleDelete}>X</button> */}
-                </div>) : <></>}
+                </div>))}
             <form onSubmit={handleSubmit}>
                 <label /> Create a new item:
                 <input 
